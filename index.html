@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Current Weather App</title>
+    </head>
+    
+    
+    
+    <body>
+       <input type="text" id="city">
+        <button id="btn">Know Weather</button>
+    </body>
+    <div id="info"></div>
+    
+    <script>
+        document.getElementById("btn").onclick = () =>{
+            let p= document.getElementById("city").value;
+            
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${p}&units=metric&appid=f6c7ef1188294e1907b4f89bfdc826eb`)
+        .then(data=>{
+            return data.json()
+        }) 
+        .then(data2=>{
+           /* console.log(data2.name)
+            console.log(data2.main.temp)
+            console.log(data2.weather[0].description)*/
+            
+           document.getElementById("info").innerHTML=`
+
+                        <ul>
+                        <li>City: ${data2.name}</li>
+                        <li>Temperature in Celcius: ${data2.main.temp}</li>
+                        <li>Description: ${data2.weather[0].description}</li>
+                        </ul>
+
+`
+
+        })
+        }
+    </script>
+    
+    
+      
+    <!--<body>
+        <input type="text" id="city">
+        <button id="mybtn">Know Weather</button>
+        <div id="info">
+            
+        </div>
+    
+        <script>
+            document.getElementById("mybtn").onClick = () => {
+                
+                //let p= document.getElementById("city").value;
+               // console.log(p);
+                fetch("http://api.openweathermap.org/data/2.5/weather?q=$jaipur&units=metric&appid=f6c7ef1188294e1907b4f89bfdc826eb")
+                .then(data=>{
+                    return data.json()
+                })
+                .then(data2=>{
+                    
+                    console.log(data2)
+                    
+                    
+                    
+                    //document.getElementById("info").innerHTML=`
+                       /* <ul>
+                        <li>City: ${data2.name}</li>
+                        <li>Temperature in Celcius: ${main.temp}</li>
+                        <li>Description: ${data2.weather[0].description}</li>
+                        </ul>*/
+                        
+                       // document.getElementById("")
+                })
+            }
+        </script>-->
+    </body>
+</html>
